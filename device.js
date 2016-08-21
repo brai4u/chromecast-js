@@ -118,7 +118,7 @@ Device.prototype.play = function(resource, n, callback) {
     });
 };
 
-Device.prototype.background = function(resource, n, callback) {
+Device.prototype.background = function(resource, callback) {
     var self = this;
 
     options = { autoplay: true };
@@ -130,9 +130,8 @@ Device.prototype.background = function(resource, n, callback) {
         };
     }
 
-    options['currentTime'] = n || 0;
 
-    self.player.load(media, options, function(err, status) {
+    self.player.load(media, function(err, status) {
         self.playing = true;
         if (callback){
             callback(err,status);
